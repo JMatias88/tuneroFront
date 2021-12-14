@@ -42,7 +42,7 @@ export class TurnosFormComponent implements OnInit {
   })
 
   rangeTime = new FormGroup({
-    start: new FormControl({value:'', disabled:!this.createMode},[Validators.required]),
+    start: new FormControl('',[Validators.required]),
     end : new FormControl('',[Validators.required])
   })
 
