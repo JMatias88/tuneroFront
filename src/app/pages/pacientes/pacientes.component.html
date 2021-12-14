@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <mat-toolbar color="primary" class="mat-elevation-z6">
+        <span>Pacientes</span>
+    </mat-toolbar>
+    <hr>
+    <div class="row">
+        <div class="col-12">
+            <button (click)="clickAdd()" class="col-12"  mat-raised-button color="primary">Agregar Paciente</button>
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <app-pacientes-table></app-pacientes-table>
+        </div>
+    </div>
+</div>

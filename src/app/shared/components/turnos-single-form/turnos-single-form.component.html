@@ -1,0 +1,77 @@
+<mat-dialog-content>
+    <div class="container">
+        <div class="row">
+            <mat-toolbar color="primary" class="mat-elevation-z6">
+                <span>Modificar Turno</span>
+            </mat-toolbar>
+        </div>
+        <div class="container form-container mt-2">
+                <form [formGroup]="turnosForm">
+
+                    <div class="row">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Fecha</mat-label>
+                            <input matInput [matDatepicker]="dp" formControlName="fecha">
+                            <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                            <mat-datepicker #dp></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+
+    
+ 
+                    <div class="row">
+                        <mat-form-field class="col-12 col-md-6">
+                            <mat-label>Hora Inicio</mat-label>
+                            <input matInput [ngxTimepicker]="timepicker" max="17:30" min="08:00" [format]="24" formControlName="horaInicio">
+                            <ngx-material-timepicker #timepicker ></ngx-material-timepicker >
+                        </mat-form-field>  
+
+                        <mat-form-field class="col-12 col-md-6">
+                            <mat-label>Hora Final</mat-label>
+                            <input matInput [ngxTimepicker]="timepicker2" max="17:30" min="08:00"  [format]="24" formControlName="horaFin"  >
+                            <ngx-material-timepicker #timepicker2 [format]="24"></ngx-material-timepicker>
+                        </mat-form-field> 
+
+                    </div>
+
+                    <div class="row">
+                        <mat-form-field class="col-12 col-md-6">
+                            <mat-label>Box</mat-label>
+                            <mat-select formControlName="box" >
+                                <mat-option *ngFor="let box of boxes " [value]="box.nombre">{{box.nombre}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+    
+                        <mat-form-field class="col-12 col-md-6">
+                            <mat-label>Servicio</mat-label>
+                            <mat-select  formControlName="servicio" >
+                                <mat-option *ngFor="let servicio of servicios " [value]="servicio.nombre">{{servicio.nombre}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field class="col-12">
+                            <mat-label>Estado</mat-label>
+                            <mat-select  formControlName="estado" >
+                                <mat-option *ngFor="let key of estadoKeys " [value]="key">{{estados[key]}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </form>
+
+                <div class="row">
+                    <div class="col-12  col-md-6">
+                        <button class="col-12 "  
+                        (click)="submit()"
+                        color="accent"
+                         mat-raised-button>Guardar</button>                
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <button class="col-12"  color="warn" [mat-dialog-close]="false"  mat-raised-button>Cancelar</button>  
+                    </div>
+        
+                </div>
+
+        </div>
+    </div>
+</mat-dialog-content>

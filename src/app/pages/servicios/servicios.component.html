@@ -1,0 +1,16 @@
+
+<div class="container-fluid">
+    <mat-toolbar color="primary" class="mat-elevation-z6">
+        <span>Servicios</span>
+    </mat-toolbar>
+    <hr>
+    <div class="row">
+        <div class="col-12">
+            <button class="col-12" color="primary" (click)="clickAdd()" mat-raised-button matTooltip="Agregar un Servicio Nuevo">Agregar Servicio</button>
+        </div>
+    </div>
+    <div class="row">
+        <app-servicios-table></app-servicios-table>
+    </div>
+</div>
+

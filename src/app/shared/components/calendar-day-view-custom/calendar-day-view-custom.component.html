@@ -1,0 +1,15 @@
+<mwl-calendar-day-view
+[viewDate]="viewDate"
+[events]="events"
+[dayStartHour]="8"
+[dayStartMinute]="0"                  
+precision="minutes" 
+[dayEndHour]="17"
+[dayEndMinute]="30"
+[hourSegments]="2"
+[refresh]="refresh"
+(eventTimesChanged)="eventTimesChanged($event)"
+(hourSegmentClicked)="hourSegmentClicked($event)"
+
+>
+</mwl-calendar-day-view>  

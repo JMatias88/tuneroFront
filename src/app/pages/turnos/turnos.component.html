@@ -1,0 +1,138 @@
+<div class="container-fluid">
+    <mat-toolbar color="primary" class="mat-elevation-z6">
+        <span>Turnos</span>
+    </mat-toolbar>
+    <hr>
+    <div class="row">
+        <div class="col-12 col-md-2">
+            <button class="col-12" mat-raised-button color="accent"
+            (click)="search()"
+            >Buscar Paciente</button>
+        </div>
+        <mat-form-field class="col-12 col-md-10">
+            <input matInput placeholder="Ingrese Dni" [(ngModel)]="dni" (keyup.enter)="search()">
+        </mat-form-field>
+    </div>
+ 
+    <div class="row">
+<div class="col-12">
+    <mat-card>
+        <mat-table [dataSource]="dataSource">
+            <ng-container matColumnDef="fecha">
+                <mat-header-cell *matHeaderCellDef> Fecha
+                </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                  <span class="mobile-label">Fecha:</span>
+                  {{element.fecha |  date:"dd/MM/YYYY" }} </mat-cell>
+            </ng-container>
+
+
+            <ng-container matColumnDef="nombre">
+              <mat-header-cell *matHeaderCellDef> Nombre
+              </mat-header-cell>
+              <mat-cell *matCellDef="let element"> 
+                <span class="mobile-label">Nombre:</span>
+                {{element.paciente?.nombre}} </mat-cell>
+          </ng-container>
+            
+            <ng-container matColumnDef="apellido">
+              <mat-header-cell *matHeaderCellDef> Nombre
+              </mat-header-cell>
+              <mat-cell *matCellDef="let element"> 
+                <span class="mobile-label">Nombre:</span>
+                {{element.paciente?.apellido}} </mat-cell>
+          </ng-container>
+
+          
+          <ng-container matColumnDef="horaInicio">
+            <mat-header-cell *matHeaderCellDef> Hora Fin
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+              <span class="mobile-label">Hora Inicio:</span>
+              {{element.horaInicio}} </mat-cell>
+        </ng-container>
+
+            <ng-container matColumnDef="horaFin">
+                <mat-header-cell *matHeaderCellDef> Hora Fin
+                </mat-header-cell>
+                <mat-cell *matCellDef="let element"> 
+                  <span class="mobile-label">Hora Fin:</span>
+                  {{element.horaFin}} </mat-cell>
+            </ng-container>
+
+            
+            <ng-container matColumnDef="box">
+              <mat-header-cell *matHeaderCellDef> Box
+              </mat-header-cell>
+              <mat-cell *matCellDef="let element"> 
+                <span class="mobile-label">Box:</span>
+                {{element.box}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="estado">
+            <mat-header-cell *matHeaderCellDef> Estado
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+              <span class="mobile-label">Estado:</span>
+              {{element.estado}} </mat-cell>
+        </ng-container>
+
+          
+          <ng-container matColumnDef="servicio">
+            <mat-header-cell *matHeaderCellDef> Servicio
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+              <span class="mobile-label">Servicio:</span>
+              {{element.servicio}} </mat-cell>
+        </ng-container>
+
+
+        
+            <ng-container matColumnDef="actions">
+              <mat-header-cell *matHeaderCellDef>
+              </mat-header-cell>
+              <mat-cell *matCellDef="let element"> 
+              <button (click)="clickEdit(element)" mat-icon-button color="accent" matTooltip="Editar Turno" >
+                  <mat-icon aria-label="label">create</mat-icon>
+              </button>    
+              <button 
+              (click)="clickDelete(element)"
+              mat-icon-button color="warn" matTooltip="Eliminar Turno">
+                  <mat-icon aria-label="label" >delete</mat-icon>
+              </button>        
+              </mat-cell>
+          </ng-container>
+        
+    
+    
+      
+            <ng-container matColumnDef="noData">
+              <mat-footer-cell *matFooterCellDef colspan="6">
+                No hay datos
+              </mat-footer-cell>
+      
+            </ng-container>
+      
+            <ng-container matColumnDef="error">
+              <mat-footer-cell *matFooterCellDef colspan="6">
+                Error al obtener los datos
+              </mat-footer-cell>
+      
+            </ng-container>
+        
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    
+            <mat-footer-row *matFooterRowDef="['noData']"
+            [ngClass]="{'hide': !(turnos != undefined && turnos.length == 0 && !errorTable)}">
+          </mat-footer-row>
+    
+          <mat-footer-row *matFooterRowDef="['error']"
+          [ngClass]="{'hide': !(errorTable )}"
+            ></mat-footer-row>
+    
+        </mat-table>
+    </mat-card>
+</div>
+    </div>
+</div>

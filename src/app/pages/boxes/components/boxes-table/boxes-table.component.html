@@ -1,0 +1,78 @@
+
+    <mat-card>
+        <mat-table [dataSource]="dataSource">
+    
+            <ng-container matColumnDef="nombre">
+                <mat-header-cell *matHeaderCellDef> 
+                    Nombre
+                </mat-header-cell>
+                <mat-cell *matCellDef="let element"> 
+                    <span class="mobile-label">Nombre:</span>
+                    {{element.nombre}} </mat-cell>
+            </ng-container>
+    
+            <ng-container matColumnDef="descripcion">
+                <mat-header-cell *matHeaderCellDef> 
+                    Descripcion
+                </mat-header-cell>
+                <mat-cell *matCellDef="let element"> 
+                    <span class="mobile-label">Descripcion:</span>
+                    {{ element.descripcion }} </mat-cell>
+            </ng-container>
+    
+            <ng-container matColumnDef="actions">
+                <mat-header-cell *matHeaderCellDef>
+                </mat-header-cell>
+                <mat-cell *matCellDef="let element"> 
+                <button (click)="clickEdit(element)" mat-icon-button color="accent" matTooltip="Editar Paciente" >
+                    <mat-icon aria-label="label">create</mat-icon>
+                </button>    
+                <button (click)="clickDelete(element)" mat-icon-button color="warn" matTooltip="Dar de baja el paciente">
+                    <mat-icon aria-label="label" >delete</mat-icon>
+                </button>        
+                </mat-cell>
+            </ng-container>
+            
+            <ng-container matColumnDef="loading">
+                <mat-footer-cell *matFooterCellDef colspan="6">
+                  Cargando...
+                </mat-footer-cell>
+        
+              </ng-container>
+    
+      
+            <ng-container matColumnDef="noData">
+              <mat-footer-cell *matFooterCellDef colspan="6">
+                No hay datos
+              </mat-footer-cell>
+      
+            </ng-container>
+      
+            <ng-container matColumnDef="error">
+              <mat-footer-cell *matFooterCellDef colspan="6">
+                Error al obtener los datos
+              </mat-footer-cell>
+      
+            </ng-container>
+    
+            
+        
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+            <mat-footer-row *matFooterRowDef="['noData']"
+            [ngClass]="{'hide': !(boxes != undefined && boxes.length == 0 && !errorTable)}">
+          </mat-footer-row>
+          <mat-footer-row *matFooterRowDef="['loading']"
+              [ngClass]="{'hide': !(boxes == undefined && !errorTable)}"
+          ></mat-footer-row>
+    
+          <mat-footer-row *matFooterRowDef="['error']"
+          [ngClass]="{'hide': !(errorTable )}"
+            ></mat-footer-row>
+        </mat-table>
+
+        <mat-paginator [pageSizeOptions]="[10,20, 40, 80, 100]"  ></mat-paginator>
+    
+    
+    </mat-card>

@@ -1,0 +1,82 @@
+<mat-dialog-content>
+    <div class="container">
+        <div class="row">
+            <mat-toolbar color="primary" class="mat-elevation-z6">
+                <span>Dar de Alta</span>
+            </mat-toolbar>
+        </div>
+    </div>
+    <div class="container form-container mt-2">
+        <form [formGroup]="pacienteForm">
+        <div class="row" >
+            <mat-form-field   class="col-12" >
+                <mat-label>Dni</mat-label>
+                <input type="number" formControlName="dni" matInput max="99999999">
+                <mat-error *ngIf="pacienteForm.get('dni').errors?.required">
+                    Campo Requerido
+                </mat-error>
+                <mat-error *ngIf="pacienteForm.get('dni').errors?.max">
+                    Dni Invalido
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field class="col-12 col-md-6" >
+                <mat-label>Nombre</mat-label>
+                <input formControlName="nombre" matInput>
+                <mat-error>Campo Requerido</mat-error>
+            </mat-form-field>
+            <mat-form-field   class="col-12 col-md-6" >
+                <mat-label>Apellido</mat-label>
+                <input formControlName="apellido" matInput>
+                <mat-error>Campo Requerido</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field class="col-12 col-md-6" >
+                <mat-label>Direccion</mat-label>
+                <input formControlName="direccion" matInput>
+                <mat-error>Campo Requerido</mat-error>
+            </mat-form-field>
+            <mat-form-field   class="col-12 col-md-6" >
+                <mat-label>Telefono</mat-label>
+                <input formControlName="telefono" matInput>
+                <mat-error>Campo Requerido</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field>
+                <mat-label>Fecha De Nacimiento</mat-label>
+                <input matInput [matDatepicker]="fnac" formControlName="fechaNacimiento" >
+                <mat-datepicker-toggle matSuffix [for]="fnac"></mat-datepicker-toggle>
+                <mat-datepicker #fnac></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field  class="col-12" >
+                <mat-label>Obra Social</mat-label>
+                <mat-select  formControlName="obraSocial" [compareWith]="compareWith">
+                    <mat-option *ngFor="let obraSocial of obraSociales " [value]="obraSocial">{{obraSocial.nombre}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field *ngIf="pacienteForm.get('obraSocial').value != ''" class="col-12" >
+                <mat-label>Numero de socio</mat-label>
+                <input formControlName="socialNumber" matInput>
+            </mat-form-field>
+        </div>
+    </form>
+        <div class="row mt-2 ">
+            <div class="col-12 col-md-6">
+                <button class="col-12"  color="accent"
+                [disabled]="pacienteForm.invalid"
+                (click)="submit()"
+                 mat-raised-button>Guardar</button>                
+            </div>
+            <div class="col-12 col-md-6">
+                <button class="col-12"  color="warn" [mat-dialog-close]="false"  mat-raised-button>Cancelar</button>  
+            </div>
+
+        </div>
+    </div>
+</mat-dialog-content>

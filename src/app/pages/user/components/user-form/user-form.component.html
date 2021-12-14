@@ -1,0 +1,75 @@
+<mat-dialog-content>
+    <div class="container">
+        <div class="row">
+            <mat-toolbar color="primary" class="mat-elevation-z6">
+                <span>Dar de Alta</span>
+            </mat-toolbar>
+        </div>
+    </div>
+    <div class="container form-container mt-2">
+        <form [formGroup]="userForm">
+        <div class="row" >
+
+            <mat-form-field  class="col-12 col-md-6" >
+                <mat-label>Usuario</mat-label>
+                <input formControlName="username" matInput>
+                <mat-error *ngIf="userForm.get('username').errors?.required">Campo Requerido</mat-error>
+                <mat-error *ngIf="userForm.get('username').errors?.minlength">El usuario debe tener un minimo de 4 caracteres</mat-error>
+                <mat-error *ngIf="userForm.get('username').errors?.repeat">El Usuario ya se encuentra en uso</mat-error>
+            </mat-form-field>
+            <mat-form-field *ngIf="createMode" class="col-12 col-md-6" >
+                <mat-label>Contaseña</mat-label>
+                <input  formControlName="password"  matInput>
+                <mat-error *ngIf="userForm.get('password').errors?.required">Campo Requerido</mat-error>
+                <mat-error *ngIf="userForm.get('password').errors?.minLength">El usuario debe tener un minimo de 8 caracteres</mat-error>
+            </mat-form-field>
+            <div class="col-12 col-md-6">
+                <button *ngIf="!createMode" class="col-12" color="accent" mat-raised-button>Restaurar Contraseña</button>
+            </div>
+        </div>
+        <div class="row">
+            <mat-form-field  class="col-12" >
+                <mat-label>Email</mat-label>
+                <input  formControlName="email" matInput>
+                <mat-error *ngIf="userForm.get('email').errors?.required">Campo Requerido</mat-error>
+                <mat-error *ngIf="userForm.get('email').errors?.email">Ingrese un email valido</mat-error>
+                <mat-error *ngIf="userForm.get('email').errors?.repeat">El Email ya se encuentra en uso</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field class="col-12" >
+                <mat-label>Nombre</mat-label>
+                <input formControlName="nombre" matInput>
+                <mat-error>Campo Requerido</mat-error>
+            </mat-form-field>
+            <mat-form-field   class="col-12" >
+                <mat-label>Apellido*</mat-label>
+                <input formControlName="apellido" matInput>
+                <mat-error>Campo Requerido</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field  class="col-12" >
+                <mat-label>Permisos</mat-label>
+                <mat-select formControlName="role" >
+                    <mat-option value="ADMINISTRATIVO">ADMINISTRATIVO</mat-option>
+                    <mat-option value="SECRETARIA">SECRETARIA</mat-option>
+                </mat-select>
+                <mat-error>Campo Requerido</mat-error>
+            </mat-form-field>
+        </div>
+    </form>
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <button class="col-12"  color="accent"
+                 [disabled]="userForm.invalid"
+                 (click)="submit()"
+                 mat-raised-button>Guardar</button>                
+            </div>
+            <div class="col-12 col-md-6">
+                <button class="col-12"  color="warn" [mat-dialog-close]="false"  mat-raised-button>Cancelar</button>  
+            </div>
+
+        </div>
+    </div>
+</mat-dialog-content>

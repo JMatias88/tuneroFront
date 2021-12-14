@@ -1,0 +1,46 @@
+
+    <mat-card>
+        <mat-table [dataSource]="dataSource">
+    
+            <ng-container matColumnDef="nombre">
+                <mat-header-cell *matHeaderCellDef> 
+                    Nombre
+                </mat-header-cell>
+                <mat-cell *matCellDef="let element"> 
+                    <span class="mobile-label">Nombre:</span>
+                    {{element.nombre}} </mat-cell>
+            </ng-container>
+    
+            <ng-container matColumnDef="coseguro">
+                <mat-header-cell *matHeaderCellDef> 
+                    Coseguro
+                </mat-header-cell>
+                <mat-cell *matCellDef="let element"> 
+                    <span class="mobile-label">Coseguro:</span>
+                    {{ (element.coseguro ? 'Si' : 'No') }} </mat-cell>
+            </ng-container>
+    
+            <ng-container matColumnDef="actions">
+                <mat-header-cell *matHeaderCellDef>
+                </mat-header-cell>
+                <mat-cell *matCellDef="let element"> 
+                <button (click)="clickEdit(element)" mat-icon-button color="accent" matTooltip="Editar Paciente" >
+                    <mat-icon aria-label="label">create</mat-icon>
+                </button>    
+                <button (click)="clickDelete(element)" mat-icon-button color="warn" matTooltip="Dar de baja el paciente">
+                    <mat-icon aria-label="label" >delete</mat-icon>
+                </button>        
+                </mat-cell>
+            </ng-container>
+            
+    
+            
+        
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+
+        <mat-paginator [pageSizeOptions]="[10,20, 40, 80, 100]"  ></mat-paginator>
+    
+    
+    </mat-card>

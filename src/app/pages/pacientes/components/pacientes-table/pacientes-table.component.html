@@ -1,0 +1,111 @@
+<mat-card>
+    <form [formGroup]="filter" >
+    <mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="dni">
+            <mat-header-cell *matHeaderCellDef> 
+               
+                <mat-form-field class="table-header col-10" appearance="outline">
+                    <mat-label>DNI</mat-label>
+                    <input formControlName="dni" matInput>
+                </mat-form-field>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+                <span class="mobile-label">Dni:</span>
+                {{element.dni}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="nombre">
+            <mat-header-cell *matHeaderCellDef> 
+                <mat-form-field class="table-header col-10" appearance="outline">
+                    <mat-label>Nombre</mat-label>
+                    <input formControlName="nombre" matInput>
+                </mat-form-field>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+                <span class="mobile-label">Nombre:</span>
+                {{element.nombre}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="apellido">
+            <mat-header-cell *matHeaderCellDef> 
+                <mat-form-field class="table-header col-10" appearance="outline">
+                    <mat-label>Apellido</mat-label>
+                    <input formControlName="apellido" matInput>
+                </mat-form-field>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+                <span class="mobile-label">Apellidos:</span>
+                {{element.apellido}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="direccion">
+            <mat-header-cell *matHeaderCellDef> 
+                <mat-form-field class="table-header col-10" appearance="outline">
+                    <mat-label>Direccion</mat-label>
+                    <input formControlName="direccion" matInput>
+                </mat-form-field>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+                <span class="mobile-label">Direccion:</span>
+                {{element.direccion}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="telefono">
+            <mat-header-cell *matHeaderCellDef> 
+                <mat-form-field class="table-header col-10" appearance="outline">
+                    <mat-label>Telefono</mat-label>
+                    <input formControlName="telefono" matInput>
+                </mat-form-field>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+                <span class="mobile-label">Telefono:</span>
+                {{element.telefono}} </mat-cell>
+        </ng-container>
+
+        
+        <ng-container matColumnDef="obraSocial">
+            <mat-header-cell *matHeaderCellDef>    
+             <mat-form-field class="table-header col-10" appearance="outline">
+                 <mat-label>Obra Social</mat-label>
+                 <mat-select formControlName="obraSocialId">
+                     <mat-option *ngFor="let obraSocial of obraSociales " [value]="obraSocial.id">{{obraSocial.nombre}}</mat-option>
+                 </mat-select>
+             </mat-form-field>   
+                
+
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <span class="mobile-label">Obra Social:</span>
+                {{element.obraSocial?.nombre}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>
+                    <button (click)="filter.reset(initialValues)" mat-icon-button matTooltip="Restaurar filtros">
+                        <mat-icon aria-label="label">youtube_searched_for</mat-icon>
+                    </button>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+            <button (click)="clickEdit(element)" mat-icon-button color="accent" matTooltip="Editar Paciente" >
+                <mat-icon aria-label="label">create</mat-icon>
+            </button>    
+            <button (click)="clickDelete(element)" mat-icon-button color="warn" matTooltip="Dar de baja el paciente">
+                <mat-icon aria-label="label" >delete</mat-icon>
+            </button>   
+            <button mat-icon-button color="primary" matTooltip="Historia Clinica">
+                <mat-icon aria-label="label" >source</mat-icon>
+            </button>       
+            </mat-cell>
+        </ng-container>
+        
+
+        
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</form>
+    <mat-paginator [pageSizeOptions]="[10,20, 40, 80, 100]" (page)="pageEvent($event)" ></mat-paginator>
+
+
+</mat-card>

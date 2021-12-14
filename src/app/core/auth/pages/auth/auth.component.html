@@ -1,0 +1,82 @@
+<div class="container-fluid ps-md-0">
+    <div class="row g-0">
+      <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image">
+        
+      </div>
+      <div class="col-md-8 col-lg-6" style="position: relative;">
+        <div  class="d-none d-md-flex "  style="position: absolute;width: 100%;z-index: -1;right: 100%;top:-130%">
+          <svg style="position: fixed;transform: rotate(315deg);" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" id="blobSvg">
+            <defs>
+              <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color: rgb(76, 161, 175);"></stop>
+                <stop offset="100%" style="stop-color: rgb(196, 224, 229);"></stop>
+              </linearGradient>
+            </defs>
+            <path id="blob" d="M423,280.5Q437,311,413.5,331.5Q390,352,371.5,372Q353,392,336.5,429.5Q320,467,285,414.5Q250,362,227.5,375Q205,388,186,376Q167,364,130,364Q93,364,94,332Q95,300,51,275Q7,250,35,219.5Q63,189,62.5,151Q62,113,109,117Q156,121,178,108.5Q200,96,225,57Q250,18,287.5,18.5Q325,19,328.5,78Q332,137,332.5,163.5Q333,190,344,203Q355,216,382,233Q409,250,423,280.5Z" fill="url(#gradient)"></path>
+          </svg>
+        </div>
+            <div class="d-none d-md-flex " style="position: absolute;width: 100%;z-index: -1;top:-80px;right: -50%;">
+              <svg style="position: fixed;" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" id="blobSvg">
+                <defs>
+                  <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color: rgb(76, 161, 175);"></stop>
+                    <stop offset="100%" style="stop-color: rgb(196, 224, 229);"></stop>
+                  </linearGradient>
+                </defs>
+                <path id="blob" d="M423,280.5Q437,311,413.5,331.5Q390,352,371.5,372Q353,392,336.5,429.5Q320,467,285,414.5Q250,362,227.5,375Q205,388,186,376Q167,364,130,364Q93,364,94,332Q95,300,51,275Q7,250,35,219.5Q63,189,62.5,151Q62,113,109,117Q156,121,178,108.5Q200,96,225,57Q250,18,287.5,18.5Q325,19,328.5,78Q332,137,332.5,163.5Q333,190,344,203Q355,216,382,233Q409,250,423,280.5Z" fill="url(#gradient)"></path>
+              </svg>
+            </div>
+        <div class="login d-flex align-items-center py-5">
+          <div class="container">
+
+            <div class="row">
+              <div class="col-md-9 col-lg-8 mx-auto">
+                <h3 class="login-heading mb-4">Bienvenidos a Mis turnos  Digital
+                  </h3>
+                  <form [formGroup]="authForm">
+                    <mat-form-field class="col-12" appearance="outline">
+                      <mat-label>Usuario</mat-label>
+                      <input matInput formControlName="username" >
+                      <mat-icon matSuffix>person</mat-icon>
+                      <mat-error>
+                        <span>Usuario Incorrecto</span>
+                        
+                      </mat-error>
+                      
+                    </mat-form-field>
+    
+                    <mat-form-field class="col-12" appearance="outline">
+                      <mat-label>Contraseña</mat-label>
+                      <input matInput type="{{ view ? 'text' : 'password'}}" formControlName="password" >
+                      <mat-icon (click)="view = !view" matSuffix>{{view ? 'visibility_off': 'visibility'}}</mat-icon>
+                      <mat-error>
+                        <span>Contraseña Incorrecta</span>                        
+                      </mat-error>
+                    </mat-form-field>
+                  </form>
+
+  
+  
+                  <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" value="" id="rememberPasswordCheck">
+                    <label  class="form-check-label" for="rememberPasswordCheck">
+                      Recordarme
+                    </label>
+                  </div>
+  
+                  <div class="d-grid">
+                    <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" 
+                    [disabled]="authForm.invalid"
+                    (click)="submit()" >Ingresar</button>
+                    <div class="text-center">
+                      <a class="small" href="#">¿Olvidaste tu contraseña?</a>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

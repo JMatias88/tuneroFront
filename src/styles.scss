@@ -1,1 +1,82 @@
 /* You can add global styles to this file, and also import other style files */
+/* angular-cli file: src/styles.css */
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+/* Dialogs class */
+.backdrop-class {
+    background-color: transparent;
+}
+
+
+.form-container {
+  background-color: white;
+  padding: 10px;
+  border:1px solid rgb(211 177 177 / 75%);
+}
+
+
+.panel-class {
+    min-width: 50vw;
+}
+
+.panel-class .mat-dialog-container {
+    background-color: transparent;
+    box-shadow: unset;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+// .mat-form-field.table-header {
+//     width: auto!important;
+// }
+.mat-form-field.table-header .mat-form-field-wrapper {
+    padding-bottom: unset!important;
+    // width:80%;
+    // text-align: center;
+}
+
+.mat-table {
+    // overflow: auto;
+    // max-height: 500px;
+  }
+  
+  .mobile-label {
+    display: none;
+  }
+  
+  @media(max-width: 600px) {
+    .mat-cell {
+        width: 100%;
+    justify-content: space-between;
+    }
+    .mobile-label {
+      width: 80px;
+      display: inline-block;
+          font-weight: bold;
+    }
+  
+    .mat-header-row {
+      display: none;
+    }
+  
+    .mat-row { 
+      flex-direction: column;
+      align-items: start;
+      padding: 8px 24px;
+    }
+  }
+
+
+  .cal-week-view {
+
+    .cal-hour-segment.cal-after-hour-start .cal-time {
+        display: block;
+    }
+ }
+
+ .timepicker-backdrop-overlay, .timepicker-overlay {
+  z-index: 9999!important
+ }
+
+ // regular style toast
+@import '~ngx-toastr/toastr';
+

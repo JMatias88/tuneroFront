@@ -1,0 +1,64 @@
+<div class="container-fluid">
+    <mat-toolbar color="primary" class="mat-elevation-z6">
+        <span>Usuarios</span>
+    </mat-toolbar>
+    <hr>
+    <div class="row">
+        <div class="col-12 col-md-2">
+            <button class="col-12" mat-raised-button color="accent"
+            (click)="clickAdd()"
+            >Agregar</button>
+        </div>
+        <mat-form-field class="col-12 col-md-10">
+            <input matInput placeholder="Buscar">
+        </mat-form-field>
+    </div>
+    
+    <div class="row">
+        <div class="col-12">
+            <mat-table [dataSource]="dataSource">
+
+
+                <ng-container matColumnDef="usuario">
+                    <mat-header-cell *matHeaderCellDef> Usuario
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element"  data-label="Usuario:"> {{element.username}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="nomyape">
+                    <mat-header-cell *matHeaderCellDef> Nombre y Apellido
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element" data-label="Nombre y Apellido:"> {{element.nombre + ' ' + element.apellido }} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="email">
+                    <mat-header-cell *matHeaderCellDef> Email
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element" data-label="Email:"> {{element.email}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="role">
+                    <mat-header-cell *matHeaderCellDef> Permisos
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element" data-label="Permisos:"> {{element.role}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="actions">
+                    <mat-header-cell *matHeaderCellDef>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> 
+                    <button (click)="clickEdit(element)" mat-icon-button color="accent" >
+                        <mat-icon aria-label="label">create</mat-icon>
+                    </button>    
+                    <button mat-icon-button color="warn" [disabled]="users && users.length == 1" (click)="clickDelete(element)">
+                        <mat-icon aria-label="label" >delete</mat-icon>
+                    </button>    
+                    </mat-cell>
+                </ng-container>
+            
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+        </div>
+    </div>
+</div>

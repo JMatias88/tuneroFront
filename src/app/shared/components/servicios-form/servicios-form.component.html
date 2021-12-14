@@ -1,0 +1,37 @@
+<mat-dialog-content>
+    <div class="container">
+        <div class="row">
+            <mat-toolbar color="primary" class="mat-elevation-z6">
+                <span>Boxes</span>
+            </mat-toolbar>
+        </div>
+    </div>
+    <div class="container form-container mt-2">
+        <div class="row">
+            <form [formGroup]="servicioForm">
+                <mat-form-field class="col-12">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput formControlName="nombre">
+                </mat-form-field>
+                <mat-form-field class="col-12">
+                    <mat-label>Descripcion</mat-label>
+                    <input matInput formControlName="descripcion">
+                </mat-form-field>
+                
+                
+            </form>
+            <div class="col-12 col-md-6">
+                <button class="col-12"  
+
+                (click)="submit()"
+                     color="accent"
+                 mat-raised-button>Guardar</button>                
+            </div>
+            <div class="col-12 col-md-6">
+                <button class="col-12"  color="warn" [mat-dialog-close]="false"  mat-raised-button>Cancelar</button>  
+            </div>
+
+        </div>
+    </div>
+</mat-dialog-content>
+
